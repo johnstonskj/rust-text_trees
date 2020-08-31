@@ -93,6 +93,10 @@ root
 
 # Changes
 
+**Version 0.1.2**
+
+* Documentation changes only.
+
 **Version 0.1.1**
 
 * Bug in top-down, bottom-anchored, tree with missing spacing.
