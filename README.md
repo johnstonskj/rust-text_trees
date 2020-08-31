@@ -88,7 +88,7 @@ root
 |           '-- Great Grand Child 2
 |               '-- Great Great Grand Child 2
 '-- Aunt
-   '-- Child 3
+    '-- Child 3
 ```
 
 # Changes
