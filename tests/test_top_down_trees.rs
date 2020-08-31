@@ -49,14 +49,14 @@ fn test_ascii_below_tree() {
         r#"root
 +-- Uncle
 +-- Parent
-|  +-- Child 1
-|  |  '-- Grand Child 1
-|  '-- Child 2
-|     '-- Grand Child 2
-|        '-- Great Grand Child 2
-|           '-- Great Great Grand Child 2
+|   +-- Child 1
+|   |   '-- Grand Child 1
+|   '-- Child 2
+|       '-- Grand Child 2
+|           '-- Great Grand Child 2
+|               '-- Great Great Grand Child 2
 '-- Aunt
-   '-- Child 3
+    '-- Child 3
 "#
         .to_string()
     );
@@ -76,14 +76,14 @@ fn test_box_char_below_tree() {
         r#"root
 ├── Uncle
 ├── Parent
-│  ├── Child 1
-│  │  └── Grand Child 1
-│  └── Child 2
-│     └── Grand Child 2
-│        └── Great Grand Child 2
-│           └── Great Great Grand Child 2
+│   ├── Child 1
+│   │   └── Grand Child 1
+│   └── Child 2
+│       └── Grand Child 2
+│           └── Great Grand Child 2
+│               └── Great Great Grand Child 2
 └── Aunt
-   └── Child 3
+    └── Child 3
 "#
         .to_string()
     );

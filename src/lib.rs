@@ -83,14 +83,14 @@ This results in a textual representation of the tree as follows.
 root
 +-- Uncle
 +-- Parent
-|  +-- Child 1
-|  |  '-- Grand Child 1
-|  '-- Child 2
-|     '-- Grand Child 2
-|        '-- Great Grand Child 2
-|           '-- Great Great Grand Child 2
+|   +-- Child 1
+|   |   '-- Grand Child 1
+|   '-- Child 2
+|       '-- Grand Child 2
+|           '-- Great Grand Child 2
+|               '-- Great Great Grand Child 2
 '-- Aunt
-  '-- Child 3
+    '-- Child 3
 ```
 
 # Formatting Options
@@ -109,14 +109,14 @@ The following sections demonstrate how different combinations of values for the 
 root
 +-- Uncle
 +-- Parent
-|  +-- Child 1
-|  |  '-- Grand Child 1
-|  '-- Child 2
-|     '-- Grand Child 2
-|        '-- Great Grand Child 2
-|           '-- Great Great Grand Child 2
+|   +-- Child 1
+|   |   '-- Grand Child 1
+|   '-- Child 2
+|       '-- Grand Child 2
+|           '-- Great Grand Child 2
+|               '-- Great Great Grand Child 2
 '-- Aunt
-   '-- Child 3
+    '-- Child 3
 ```
 
 | Option          | Setting   |
@@ -151,14 +151,14 @@ root
 root
 ├── Uncle
 ├── Parent
-│  ├── Child 1
-│  │  └── Grand Child 1
-│  └── Child 2
-│     └── Grand Child 2
-│        └── Great Grand Child 2
-│           └── Great Great Grand Child 2
+│   ├── Child 1
+│   │   └── Grand Child 1
+│   └── Child 2
+│       └── Grand Child 2
+│           └── Great Grand Child 2
+│               └── Great Great Grand Child 2
 └── Aunt
-   └── Child 3
+    └── Child 3
 ```
 
 | Option          | Setting   |
@@ -426,12 +426,28 @@ impl TreeFormatting {
 
     #[inline]
     pub(crate) fn just_space(&self) -> String {
-        self.chars.just_space()
+        format!(
+            "{}{}",
+            self.chars.just_space(),
+            if self.anchor == AnchorPosition::Below {
+                self.chars.horizontal_space.to_string()
+            } else {
+                String::new()
+            }
+        )
     }
 
     #[inline]
     pub(crate) fn bar_and_space(&self) -> String {
-        self.chars.bar_and_space()
+        format!(
+            "{}{}",
+            self.chars.bar_and_space(),
+            if self.anchor == AnchorPosition::Below {
+                self.chars.horizontal_space.to_string()
+            } else {
+                String::new()
+            }
+        )
     }
 
     #[inline]

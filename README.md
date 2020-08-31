@@ -81,17 +81,23 @@ This results in a textual representation of the tree as follows.
 root
 +-- Uncle
 +-- Parent
-|  +-- Child 1
-|  |  '-- Grand Child 1
-|  '-- Child 2
-|     '-- Grand Child 2
-|        '-- Great Grand Child 2
-|           '-- Great Great Grand Child 2
+|   +-- Child 1
+|   |   '-- Grand Child 1
+|   '-- Child 2
+|       '-- Grand Child 2
+|           '-- Great Grand Child 2
+|               '-- Great Great Grand Child 2
 '-- Aunt
-  '-- Child 3
+   '-- Child 3
 ```
 
 # Changes
+
+**Version 0.1.1**
+
+* Bug in top-down, bottom-anchored, tree with missing spacing.
+* Updated all examples to match the tree output changes.
+* Added `tls` tree-ls example.
 
 **Version 0.1.0**
 
