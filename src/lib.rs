@@ -25,6 +25,9 @@ The following example constructs a tree using the `StringTreeNode` type and a co
 [`with_children`](struct.TreeNode.html#method.with_children). This demonstrates the structure of
 the tree well.
 
+For a more complete example, see the included
+[tls](https://github.com/johnstonskj/rust-text_trees/blob/master/examples/tls.rs) _tree ls_ source.
+
 ```rust
 use text_trees::StringTreeNode;
 
