@@ -1,6 +1,6 @@
 # Crate text_trees
 
-Simple textual output for tree structures.
+Simple textual output for tree-like structures.
 
 ![MIT License](https://img.shields.io/badge/license-mit-118811.svg)
 ![Minimum Rust Version](https://img.shields.io/badge/Min%20Rust-1.40-green.svg)
@@ -15,30 +15,31 @@ its formatting options.
 
 # Example
 
-Tree construction ...
+The following creates a `StringTreeNode` using a combination of `with_child_nodes` and
+`with_children` that demonstrates the structure of the tree well.
 
 ```rust
-use text_trees::SimpleTreeNode;
+use text_trees::StringTreeNode;
 
-fn make_tree() -> SimpleTreeNode {
-    SimpleTreeNode::with_children(
-        "root",
+fn make_tree() -> StringTreeNode {
+    StringTreeNode::with_child_nodes(
+        "root".to_string(),
         vec![
             "Uncle".into(),
-            SimpleTreeNode::with_children(
-                "Parent",
+            StringTreeNode::with_child_nodes(
+                "Parent".to_string(),
                 vec![
-                    SimpleTreeNode::with_children(
-                        "Child 1",
+                    StringTreeNode::with_children(
+                        "Child 1".to_string(),
                         vec!["Grand Child 1".into()].into_iter(),
                     ),
-                    SimpleTreeNode::with_children(
+                    StringTreeNode::with_child_nodes(
                         "Child 2".to_string(),
-                        vec![SimpleTreeNode::with_children(
-                            "Grand Child 2",
-                            vec![SimpleTreeNode::with_children(
-                                "Great Grand Child 2",
-                                vec!["Great Great Grand Child 2".into()].into_iter(),
+                        vec![StringTreeNode::with_child_nodes(
+                            "Grand Child 2".to_string(),
+                            vec![StringTreeNode::with_children(
+                                "Great Grand Child 2".to_string(),
+                                vec!["Great Great Grand Child 2".to_string()].into_iter(),
                             )]
                             .into_iter(),
                         )]
@@ -47,37 +48,56 @@ fn make_tree() -> SimpleTreeNode {
                 ]
                 .into_iter(),
             ),
-            SimpleTreeNode::with_children("Aunt", vec!["Child 3".to_string().into()].into_iter()),
+            StringTreeNode::with_children(
+                "Aunt".to_string(),
+                vec!["Child 3".to_string()].into_iter(),
+            ),
         ]
         .into_iter(),
     )
 }
 ```
 
-Tree output ...
+The tree implements `Display` and therefore provides a `to_string` method. It also has a 
+`to_string_with_format` method that allows for customization of the output format. Finally, it
+has two _write_ methods that take implementations of `std::io::Write` and will serialize accordingly.
 
 ```rust
-use text_trees::{ascii_formatting, to_string_with};
+use text_trees::{FormatCharacters, TreeFormatting, TreeNode};
 
-fn test_ascii_below_tree() {
-    let tree = make_tree();
-
-    let result = to_string_with(&tree, &ascii_formatting(true), None);
+fn ascii_tree(tree: TreeNode<String>) {
+    let result = tree.to_string_with_format(
+        &TreeFormatting::dir_tree(FormatCharacters::ascii())
+    );
     assert!(result.is_ok());
+
+    // ... do something else
 }
 ```
 
-Results ...
+This results in a textual representation of the tree as follows.
 
-```textroot
-       +-- Uncle
-       +-- Parent
-       |  +-- Child 1
-       |  |  '-- Grand Child 1
-       |  '-- Child 2
-       |     '-- Grand Child 2
-       |        '-- Great Grand Child 2
-       |           '-- Great Great Grand Child 2
-       '-- Aunt
-          '-- Child 3
+```text
+root
++-- Uncle
++-- Parent
+|  +-- Child 1
+|  |  '-- Grand Child 1
+|  '-- Child 2
+|     '-- Grand Child 2
+|        '-- Great Grand Child 2
+|           '-- Great Great Grand Child 2
+'-- Aunt
+  '-- Child 3
 ```
+```
+
+# Changes
+
+**Version 0.1.0**
+
+* Initial version, supports only _directory_ style trees.
+
+# TODO
+
+TBD

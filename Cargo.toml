@@ -1,6 +1,6 @@
 [package]
 name = "text_trees"
-description = "Simple textual output for tree structures."
+description = "Simple textual output for tree-like structures."
 version = "0.1.0"
 authors = ["Simon Johnston <johnstonskj@gmail.com>"]
 edition = "2018"
