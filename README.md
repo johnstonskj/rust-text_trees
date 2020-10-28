@@ -4,10 +4,11 @@ Simple textual output for tree-like structures.
 
 ![MIT License](https://img.shields.io/badge/license-mit-118811.svg)
 ![Minimum Rust Version](https://img.shields.io/badge/Min%20Rust-1.40-green.svg)
-![Rust](https://github.com/johnstonskj/rust-text_trees/workflows/Rust/badge.svg)
-[![GitHub stars](https://img.shields.io/github/stars/johnstonskj/rust-text_trees.svg)](https://github.com/johnstonskj/rust-text_trees/stargazers)
 [![crates.io](https://img.shields.io/crates/v/text_trees.svg)](https://crates.io/crates/text_trees)
 [![docs.rs](https://docs.rs/text_trees/badge.svg)](https://docs.rs/text_trees)
+![Build](https://github.com/johnstonskj/rust-text_trees/workflows/Rust/badge.svg)
+![Audit](https://github.com/johnstonskj/rust-text_trees/workflows/Security%20audit/badge.svg)
+[![GitHub stars](https://img.shields.io/github/stars/johnstonskj/rust-text_trees.svg)](https://github.com/johnstonskj/rust-text_trees/stargazers)
 
 This crate is another that will output a tree structure in text. Similar to the existing
 [ascii_tree](https://crates.io/crates/ascii_tree) crate, however it is more flexible in 
