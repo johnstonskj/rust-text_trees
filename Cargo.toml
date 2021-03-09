@@ -17,4 +17,4 @@ all-features = true
 [dependencies]
 
 [dev-dependencies]
-pretty_assertions = "0.6.1"
+pretty_assertions = "0.7.1"
