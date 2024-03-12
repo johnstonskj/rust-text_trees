@@ -451,7 +451,7 @@ impl TreeFormatting {
         format!(
             "{}{}",
             self.chars.just_space(),
-            if self.anchor == AnchorPosition::Below {
+            if self.anchor == AnchorPosition::Below && self.chars.label_space_count > 0 {
                 self.chars.horizontal_space.to_string()
             } else {
                 String::new()
@@ -464,7 +464,7 @@ impl TreeFormatting {
         format!(
             "{}{}",
             self.chars.bar_and_space(),
-            if self.anchor == AnchorPosition::Below {
+            if self.anchor == AnchorPosition::Below && self.chars.label_space_count > 0 {
                 self.chars.horizontal_space.to_string()
             } else {
                 String::new()
