@@ -90,6 +90,36 @@ fn test_box_char_below_tree() {
 }
 
 #[test]
+fn test_box_char_below_tree_no_label_spacing() {
+    let tree = make_tree();
+    let mut format = FormatCharacters::box_chars();
+    format.label_space_count = 0;
+
+    let result =
+        tree.to_string_with_format(&TreeFormatting::dir_tree(format));
+    assert!(result.is_ok());
+    let result = result.unwrap();
+    println!("{}", result);
+    assert_eq!(
+        result,
+        r#"root
+├──Uncle
+├──Parent
+│  ├──Child 1
+│  │  └──Grand Child 1
+│  └──Child 2
+│     └──Grand Child 2
+│        └──Great Grand Child 2
+│           └──Great Great Grand Child 2
+└──Aunt
+   └──Child 3
+"#
+        .to_string()
+    );
+}
+
+
+#[test]
 fn test_ascii_side_tree() {
     let tree = make_tree();
 
